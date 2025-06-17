@@ -1,9 +1,35 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "name" {
+  const leo = new Paciente(edad=40, dolor=10, fortalezaMuscular=20)
+  const milena = new Paciente(edad=3, dolor=30, fortalezaMuscular=50)
+  
+  const magneto1 = new Magneto()
+  const bici1 = new Bicicleta()
+  const mini1 = new Minitramp()
+  
+  
+  test "leonardo puede usar el magneto" {
+    assert.that(leo.puedeUsar(magneto1))
   }
+  test "leonardo puede usar la bicicleta" {
+    assert.that(leo.puedeUsar(bici1))
+  }
+  test "leonardo puede usar mini" {
+    assert.that(leo.puedeUsar(mini1))
+  }
+  test "mileana no puede usar solo la bici" {
+    assert.that(milena.puedeUsar(magneto1))
+  }
+  test "mileana no puede usar mini" {
+    assert.notThat(milena.puedeUsar(bici1))
+  }
+  test "mileana puede usar solo el magneto" {
+    assert.notThat(milena.puedeUsar(mini1))
+  }
+  test "el dolor de leo baja a 9 despues de usar el magneto" {
+    leo.usar(magneto1)
+    assert.equals(9, leo.dolor())//revisar
 
+  }
 }

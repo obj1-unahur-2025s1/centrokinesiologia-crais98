@@ -1,9 +1,53 @@
-object pepita {
-  var energy = 100
+class Paciente {
+  const edad
+  var fortalezaMuscular
+  var dolor
 
-  method energy() = energy
-
-  method fly(minutes) {
-    energy = energy - minutes * 3
+  method puedeUsar(unAparato) = unAparato.puedeSerUsado(self)
+  method disminuirDolor(unaCantidad) {
+    dolor -= 0.max(unaCantidad)
   }
+  method aumentarFortaleza(unaCantidad) {
+    fortalezaMuscular += unaCantidad
+  }
+
+  method edad() = edad
+  method fortalezaMuscular() = fortalezaMuscular 
+  method dolor() = dolor
+  method usar(unAparato) {
+    if(self.puedeUsar(unAparato)){
+      self.error("el paciente no puede usar el aparato")
+    }
+    unAparato.esUsadoPor(self)
+  }
+
+
 }
+
+class Aparato {
+  method esUsadoPor(unPaciente)
+  method puedeSerUsado(unaPaciente) 
+}
+
+class Magneto inherits Aparato{
+  override method esUsadoPor(unPaciente) { unPaciente.disminuirDolor(unPaciente.dolor()*0.1) }
+  override method puedeSerUsado(unPaciente) = true
+}
+class Bicicleta inherits Aparato {
+  override method esUsadoPor(unPaciente) { 
+    if(self.puedeSerUsado(unPaciente)){
+      unPaciente.disminuirDolor(4) 
+      unPaciente.aumentarFortaleza(3)
+    }
+  }
+  override method puedeSerUsado(unPaciente) = unPaciente.edad()>8
+}
+class Minitramp inherits Aparato {
+  override method esUsadoPor(unPaciente) {
+    if(self.puedeSerUsado(unPaciente)){
+      unPaciente.aumentarFortaleza(unPaciente.edad()*0.1)
+    }
+  }
+  override method puedeSerUsado(unPaciente) = unPaciente.dolor()<20
+}
+
