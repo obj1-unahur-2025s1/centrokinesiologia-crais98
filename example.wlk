@@ -70,6 +70,13 @@ class Bicicleta inherits Aparato {
     }
   }
   override method puedeSerUsado(unPaciente) = unPaciente.edad()>8
+
+  override method necesitaMantenimiento() = cantDesajuste>=10 or cantAceite >=5
+
+  override method hacerMantenimiento() {
+    cantDesajuste= 0
+    cantAceite= 0
+  }
 }
 class Minitramp inherits Aparato {
   override method esUsadoPor(unPaciente) {
