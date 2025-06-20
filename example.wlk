@@ -41,11 +41,19 @@ class Aparato {
   method puedeSerUsado(unaPaciente) 
   method esDeColor(unColor) = unColor == color
   method color() = color
+  method hacerMantenimiento()
 }
 
 class Magneto inherits Aparato{
-  override method esUsadoPor(unPaciente) { unPaciente.disminuirDolor(unPaciente.dolor()*0.1) }
+ var imatacion = 800
+  override method esUsadoPor(unPaciente) { unPaciente.disminuirDolor(unPaciente.dolor()*0.1) 
+    imantacion = 0.max(imantacion - 1)
+}
   override method puedeSerUsado(unPaciente) = true
+
+ override method hacerMantenimiento(){
+    imantacion = (imantacion + 500).min(800)
+ }
 }
 class Bicicleta inherits Aparato {
   override method esUsadoPor(unPaciente) { 
