@@ -132,4 +132,9 @@ object centro {
  method estaOptimo() = aparatos.all({p=>!p.necesitaMantenimiento()})
  method estaComplicado() = self.cantidadAparatosAReparar() >= aparatos.size/2
  method cantidadAparatosAReparar() = aparatos.count({p=>p.necesitaMantenimiento()})
+ method aparatosAMantener() = aparatos.filter({p=>p.necesitaMantenimiento()})
+ method visitaTecnica(){
+    aparatosAMantener.forEach({p=>p.hacerMantenimiento()})
+
+ }
 }
