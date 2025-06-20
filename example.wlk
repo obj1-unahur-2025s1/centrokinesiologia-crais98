@@ -1,4 +1,5 @@
 class Paciente {
+  const aparatosRutina = []
   const edad
   var fortalezaMuscular
   var dolor
@@ -16,13 +17,22 @@ class Paciente {
   method dolor() = dolor
   method usar(unAparato) {
     if(self.puedeUsar(unAparato)){
-      self.error("el paciente no puede usar el aparato")
+      unAparato.esUsadoPor(self)
     }
-    unAparato.esUsadoPor(self)
+    else self.error("el paciente no puede usar el aparato")
   }
-
-
+  method puedeRealizarLaRutina() = aparatosRutina.all({p=>p.puedeSerUsado(self)})
+  method realizarRutinaCompleta() {
+    if(self.puedeRealizarLaRutina()){
+      aparatosRutina.forEach({p=>p.esUsadoPor(self)})
+    }
+  }
+  method añadirAparatos(unalista){
+    aparatosRutina.addAll(unalista)
+  }
 }
+
+
 
 class Aparato {
   method esUsadoPor(unPaciente)

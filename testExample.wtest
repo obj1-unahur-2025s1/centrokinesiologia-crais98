@@ -1,6 +1,6 @@
 import example.*
 
-describe "name" {
+describe "ETAPA 1" {
   const leo = new Paciente(edad=40, dolor=10, fortalezaMuscular=20)
   const milena = new Paciente(edad=3, dolor=30, fortalezaMuscular=50)
   
@@ -18,18 +18,56 @@ describe "name" {
   test "leonardo puede usar mini" {
     assert.that(leo.puedeUsar(mini1))
   }
-  test "mileana no puede usar solo la bici" {
+  test "mileana puede usar solo el magneto" {
     assert.that(milena.puedeUsar(magneto1))
   }
-  test "mileana no puede usar mini" {
+  test "mileana no puede usar la bicicleta" {
     assert.notThat(milena.puedeUsar(bici1))
   }
-  test "mileana puede usar solo el magneto" {
+  test "mileana no puede usar el minitramp" {
     assert.notThat(milena.puedeUsar(mini1))
   }
   test "el dolor de leo baja a 9 despues de usar el magneto" {
     leo.usar(magneto1)
-    assert.equals(9, leo.dolor())//revisar
+    assert.equals(9, leo.dolor())
+  }
+  test "el dolor de milena baja a 27 despues de usar el magneto" {
+    milena.usar(magneto1)
+    assert.equals(27, milena.dolor())
+  }
+  test "el dolor de leo baja a 6 y su fortaleza aumenta a 23 despues de usar la bicleta" {
+    leo.usar(bici1)
+    assert.equals(6, leo.dolor())
+    assert.equals(23, leo.fortalezaMuscular())
+  }
+  test "Después de usar el minitramp una vez, la fortaleza de Leonardo sube a 24" {
+    leo.usar(mini1)
+    assert.equals(24, leo.fortalezaMuscular())
+  }
+}
 
+describe "ETAPA 2" {
+  const leo = new Paciente(edad=40, dolor=10, fortalezaMuscular=20)
+  const milena = new Paciente(edad=3, dolor=30, fortalezaMuscular=50)
+  
+  const magneto1 = new Magneto()
+  const bici1 = new Bicicleta()
+  const mini1 = new Minitramp()
+  
+  method initialize(){
+    leo.añadirAparatos([bici1, mini1, bici1, magneto1 ])
+    milena.añadirAparatos([magneto1, bici1])
+  }
+  
+  test "leo puede hacer la rutina que tiene asignada" {
+    assert.that(leo.puedeRealizarLaRutina())
+  }
+  test "leo hace la rutina y su dolor baja a 1.8 y su fortaleza sube a 30" { // no te dicen el orden para leonardo
+    leo.realizarRutinaCompleta()
+    assert.equals(1.8, leo.dolor())
+    assert.equals(30, leo.fortalezaMuscular())
+  }
+  test "milena no puede hacer la rutina que tiene asignada" {
+    assert.notThat(milena.puedeRealizarLaRutina())
   }
 }
