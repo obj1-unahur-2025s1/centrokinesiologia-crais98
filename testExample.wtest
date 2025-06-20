@@ -93,7 +93,9 @@ describe "ETAPA 3"{
   }
 test "nicolas puede hacer la rutina y después de hacerla una vez, su dolor baja a 1.8 y su fortaleza sube a 34"{
     nicolas.realizarRutinaCompleta()
-    assert.that(nicolas.
+    assert.that(nicolas.puedeRealizarLaRutina()
+    assert.equals(1.8, nicolas.dolor())
+    assert.equals(34, nicolas.fortalezaMuscular())
 }
 
 }
