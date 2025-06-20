@@ -129,4 +129,7 @@ object centro {
  method coloresDeAparatos()= aparatos.map({p=>p.color()}).asSet()
  method pacientesMenoresDe8años()= pacientes.filter({p=>p.edad() < 8})
  method cantPacientesQueNoCumplenSesion() = pacientes.count({p=>!p.puedeRealizarLaRutina()})
+ method estaOptimo() = aparatos.all({p=>!p.necesitaMantenimiento()})
+ method estaComplicado() = self.cantidadAparatosAReparar() >= aparatos.size/2
+ method cantidadAparatosAReparar() = aparatos.count({p=>p.necesitaMantenimiento()})
 }
