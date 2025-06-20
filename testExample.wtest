@@ -104,12 +104,18 @@ test "victoria no puede hacer la rutina"{
 
 test "julian puede hacer la rutina y después de hacerla una vez, su dolor baja a 29.3 y su fortaleza sube a 62"{
     julian.realizarRutinaCompleta()
-    assert.that(julian.puedeRealizarLaRutina()
+    assert.that(julian.puedeRealizarLaRutina())
     assert.equals(29.3, julian.dolor())
     assert.equals(62, julian.fortalezaMuscular())
 }
 
-
+test "zoe puede hacer la rutina, asignamos 2 como valor para el decremento de pacientes de rápida recuperación y después de hacer su rutina una vez, su dolor baja a 3.4 y su fortaleza sube a 51"{
+    assert.that(zoe.puedeRealizarLaRutina())
+    dolor.decrementar(2)
+    zoe.realizarRutinaCompleta()
+    assert.equals(3.4, zoe.dolor())
+    assert.equals(51, zoe.fortalezaMuscular())
+}
 
 
 
