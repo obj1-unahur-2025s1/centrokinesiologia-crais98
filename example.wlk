@@ -36,8 +36,10 @@ class Paciente {
 
 
 class Aparato {
+  var color = "blanco" // si esta seteado, como lo cambió?
   method esUsadoPor(unPaciente)
   method puedeSerUsado(unaPaciente) 
+  method esDeColor(unColor) = unColor == color
 }
 
 class Magneto inherits Aparato{
@@ -63,7 +65,7 @@ class Minitramp inherits Aparato {
 }
 
 class Resistente inherits Paciente{
-  override method usar(unAparato){
+  override method realizarRutinaCompleta(){
     super()
     self.aumentarFortalezaMuscular(self.cantidadAparatos())
     
@@ -72,13 +74,25 @@ class Resistente inherits Paciente{
 }
 
 class Caprichoso inherits Paciente{
- override method puedeRealizarLaRutina(){
-    super and
-    
-
+  override method puedeRealizarLaRutina(){
+     super() and
+     self.esDeColor("blanco")
+  }
+  method realizarSesionDoble(){
+     self.realizarRutinaCompleta()
+     self.realizarRutinaCompleta()
+  }
 }
 
 class RapidaRecuperacion{
 
+
+}
+
+object decrementarDolor{
+ var valor
+ method asignar(unValor){
+  valor = unValor
+ }
 
 }
