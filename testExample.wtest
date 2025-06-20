@@ -71,3 +71,14 @@ describe "ETAPA 2" {
     assert.notThat(milena.puedeRealizarLaRutina())
   }
 }
+
+describe "ETAPA 3"{
+  const nicolas = new Resistente(edad=40, dolor=10, fortalezaMuscular=20)
+  const victoria = new Caprichoso(edad=30, dolor=10, fortalezaMuscular=40)
+  const julian = new Caprichoso(edad=20, dolor=54, fortalezaMuscular=50)
+  const zoe = new RapidaRecuperacion(edad=50, dolor=14, fortalezaMuscular=40)
+
+
+
+
+}
