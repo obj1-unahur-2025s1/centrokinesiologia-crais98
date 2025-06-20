@@ -42,6 +42,7 @@ class Aparato {
   method esDeColor(unColor) = unColor == color
   method color() = color
   method hacerMantenimiento()
+  method necesitaMantenimiento()
 }
 
 class Magneto inherits Aparato{
@@ -54,6 +55,7 @@ class Magneto inherits Aparato{
  override method hacerMantenimiento(){
     imantacion = (imantacion + 500).min(800)
  }
+ override method necesitaMantenimiento() = imantacion < 100
 }
 class Bicicleta inherits Aparato {
   override method esUsadoPor(unPaciente) { 
