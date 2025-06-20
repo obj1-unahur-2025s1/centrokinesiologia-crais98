@@ -87,7 +87,7 @@ class Caprichoso inherits Paciente{
 class RapidaRecuperacion{
   override method      self.realizarRutinaCompleta(){
     super()
-    dolor.decrementar()
+    dolor.decrementar(3)
  }
 
 }
