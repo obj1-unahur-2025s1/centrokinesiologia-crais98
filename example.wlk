@@ -40,6 +40,7 @@ class Aparato {
   method esUsadoPor(unPaciente)
   method puedeSerUsado(unaPaciente) 
   method esDeColor(unColor) = unColor == color
+  method color() = color
 }
 
 class Magneto inherits Aparato{
@@ -98,4 +99,12 @@ object dolor{
   valor = unValor
  }
 
+}
+
+object centro {
+ const aparatos= []
+ const pacientes= []
+ method coloresDeAparatos()= aparatos.map({p=>p.color()}).asSet()
+ method pacientesMenoresDe8años()= pacientes.filter({p=>p.edad() < 8})
+ method cantPacientesQueNoCumplenSesion() = pacientes.count({p=>!p.puedeRealizarLaRutina()})
 }
