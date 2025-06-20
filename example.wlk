@@ -85,13 +85,16 @@ class Caprichoso inherits Paciente{
 }
 
 class RapidaRecuperacion{
-
+  override method      self.realizarRutinaCompleta(){
+    super()
+    dolor.decrementar()
+ }
 
 }
 
-object decrementarDolor{
+object dolor{
  var valor
- method asignar(unValor){
+ method decrementar(unValor){
   valor = unValor
  }
 
