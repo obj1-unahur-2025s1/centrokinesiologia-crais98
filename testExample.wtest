@@ -93,9 +93,26 @@ describe "ETAPA 3"{
   }
 test "nicolas puede hacer la rutina y después de hacerla una vez, su dolor baja a 1.8 y su fortaleza sube a 34"{
     nicolas.realizarRutinaCompleta()
-    assert.that(nicolas.puedeRealizarLaRutina()
+    assert.that(nicolas.puedeRealizarLaRutina())
     assert.equals(1.8, nicolas.dolor())
     assert.equals(34, nicolas.fortalezaMuscular())
 }
+
+test "victoria no puede hacer la rutina"{
+    assert.notThat(victoria.puedeRealizarLaRutina())
+}
+
+test "julian puede hacer la rutina y después de hacerla una vez, su dolor baja a 29.3 y su fortaleza sube a 62"{
+    julian.realizarRutinaCompleta()
+    assert.that(julian.puedeRealizarLaRutina()
+    assert.equals(29.3, julian.dolor())
+    assert.equals(62, julian.fortalezaMuscular())
+}
+
+
+
+
+
+
 
 }
