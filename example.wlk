@@ -58,12 +58,14 @@ class Magneto inherits Aparato{
  override method necesitaMantenimiento() = imantacion < 100
 }
 class Bicicleta inherits Aparato {
- var cantDesajusteTornillos = 0
- var cantVecesPerdidaAceite = 0
+ var cantDesajuste = 0
+ var cantAceite = 0
   override method esUsadoPor(unPaciente) { 
     if(self.puedeSerUsado(unPaciente)){
       unPaciente.disminuirDolor(4) 
       unPaciente.aumentarFortaleza(3)
+      cantDesajuste = if(self.edad()>30) cantDesajuste+1
+      cantAceite= if(self.edad()>=30 && self.edad()<=50) cantAceite+1
     }
   }
   override method puedeSerUsado(unPaciente) = unPaciente.edad()>8
