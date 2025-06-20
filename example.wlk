@@ -30,6 +30,7 @@ class Paciente {
   method añadirAparatos(unalista){
     aparatosRutina.addAll(unalista)
   }
+  method cantidadAparatos() = aparatosRutina.size()
 }
 
 
@@ -61,3 +62,23 @@ class Minitramp inherits Aparato {
   override method puedeSerUsado(unPaciente) = unPaciente.dolor()<20
 }
 
+class Resistente inherits Paciente{
+  override method usar(unAparato){
+    super()
+    self.aumentarFortalezaMuscular(self.cantidadAparatos())
+    
+  }
+
+}
+
+class Caprichoso inherits Paciente{
+ override method puedeRealizarLaRutina(){
+    super and
+    
+
+}
+
+class RapidaRecuperacion{
+
+
+}
