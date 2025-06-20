@@ -79,6 +79,17 @@ describe "ETAPA 3"{
   const zoe = new RapidaRecuperacion(edad=50, dolor=14, fortalezaMuscular=40)
 
 
+  const magneto1 = new Magneto(color="verde")
+  const bici1 = new Bicicleta(color="rojo")
+  const mini1 = new Minitramp()
+  const bici2 = new Bicicleta()
 
+  method initialize(){
+    nicolas.añadirAparatos([bici1, mini1, bici1, magneto1 ])
+    victoria.añadirAparatos([bici1, mini1, bici1, magneto1 ])
+    julian.añadirAparatos([bici1, magneto1, bici2 ])
+    nicolas.añadirAparatos([bici1, mini1, bici1, magneto1 ])
+
+  }
 
 }
