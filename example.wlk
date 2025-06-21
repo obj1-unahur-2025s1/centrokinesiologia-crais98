@@ -31,6 +31,8 @@ class Paciente {
     aparatosRutina.addAll(unalista)
   }
   method cantidadAparatos() = aparatosRutina.size()
+
+  method hayAparatoDeColor(unColor) = aparatosRutina.any({p=>p.color()== unColor})
 }
 
 
