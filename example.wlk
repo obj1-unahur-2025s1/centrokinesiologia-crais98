@@ -140,4 +140,11 @@ object centro {
     aparatosAMantener.forEach({p=>p.hacerMantenimiento()})
 
  }
+
+ method agregarAparato(unAparato){
+    aparatos.add(unAparato)
+ }
+ method agregarPaciente(unPaciente){
+    aparatos.add(unAparato)
+ }
 }
