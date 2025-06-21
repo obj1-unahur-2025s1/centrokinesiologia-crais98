@@ -41,7 +41,7 @@ class Aparato {
   var color = "blanco" // si esta seteado, como lo cambió?
   method esUsadoPor(unPaciente)
   method puedeSerUsado(unaPaciente) 
-  method esDeColor(unColor) = unColor == color
+  //method esDeColor(unColor) = unColor == color
   method color() = color
   method hacerMantenimiento()
   method necesitaMantenimiento()
@@ -101,7 +101,7 @@ class Resistente inherits Paciente{
 class Caprichoso inherits Paciente{
   override method puedeRealizarLaRutina(){
      super() and
-     self.esDeColor("blanco")
+     self.hayAparatoDeColor("blanco")
   }
   method realizarSesionDoble(){
      self.realizarRutinaCompleta()
