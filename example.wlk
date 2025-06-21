@@ -48,7 +48,7 @@ class Aparato {
 }
 
 class Magneto inherits Aparato{
- var imatacion = 800
+ var imantacion = 800
   override method esUsadoPor(unPaciente) { unPaciente.disminuirDolor(unPaciente.dolor()*0.1) 
     imantacion = 0.max(imantacion - 1)
 }
@@ -101,7 +101,7 @@ class Resistente inherits Paciente{
 class Caprichoso inherits Paciente{
   override method puedeRealizarLaRutina(){
      super() and
-     self.hayAparatoDeColor("blanco")
+     self.hayAparatoDeColor("rojo")
   }
   method realizarSesionDoble(){
      self.realizarRutinaCompleta()
