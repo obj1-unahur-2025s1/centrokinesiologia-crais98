@@ -65,7 +65,7 @@ class Bicicleta inherits Aparato {
   override method esUsadoPor(unPaciente) { 
     if(self.puedeSerUsado(unPaciente)){
       cantDesajuste = if(self.dolor()>30) cantDesajuste+1
-      cantAceite= if(self.dolor()>=30 && self.dolor()<=50) cantAceite+1
+      cantAceite= if(self.edad()>=30 && self.edad()<=50) cantAceite+1
       unPaciente.disminuirDolor(4) 
       unPaciente.aumentarFortaleza(3)
 
