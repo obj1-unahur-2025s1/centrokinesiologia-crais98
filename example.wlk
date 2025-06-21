@@ -145,6 +145,6 @@ object centro {
     aparatos.add(unAparato)
  }
  method agregarPaciente(unPaciente){
-    aparatos.add(unAparato)
+    aparatos.add(unPaciente)
  }
 }
