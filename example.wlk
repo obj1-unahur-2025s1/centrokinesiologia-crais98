@@ -92,7 +92,7 @@ class Minitramp inherits Aparato {
 class Resistente inherits Paciente{
   override method realizarRutinaCompleta(){
     super()
-    self.aumentarFortalezaMuscular(self.cantidadAparatos())
+    self.aumentarFortaleza(self.cantidadAparatos())
     
   }
 
@@ -112,7 +112,7 @@ class Caprichoso inherits Paciente{
 class RapidaRecuperacion inherits Paciente {
   override method      self.realizarRutinaCompleta(){
     super()
-    dolor= 0.max(dolor-(dolor.decrementar(3)))
+    self.disminuirDolor(dolor.decrementar(3))
  }
 
 }
