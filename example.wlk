@@ -109,7 +109,7 @@ class Caprichoso inherits Paciente{
   }
 }
 
-class RapidaRecuperacion{
+class RapidaRecuperacion inherits Paciente {
   override method      self.realizarRutinaCompleta(){
     super()
     dolor= 0.max(dolor-(dolor.decrementar(3)))
