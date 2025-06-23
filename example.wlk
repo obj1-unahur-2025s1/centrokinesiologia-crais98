@@ -104,9 +104,9 @@ class Caprichoso inherits Paciente{
      super() and
      self.hayAparatoDeColor("rojo")
   
-  method realizarSesionDoble(){
-     self.realizarRutinaCompleta()
-     self.realizarRutinaCompleta()
+  override method realizarRutinaCompleta(){
+     super()
+     super()
   }
 }
 
