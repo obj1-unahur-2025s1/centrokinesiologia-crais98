@@ -6,7 +6,7 @@ class Paciente {
 
   method puedeUsar(unAparato) = unAparato.puedeSerUsado(self)
   method disminuirDolor(unaCantidad) {
-    dolor -= 0.max(unaCantidad)
+    dolor = 0.max(dolor - unaCantidad)
   }
   method aumentarFortaleza(unaCantidad) {
     fortalezaMuscular += unaCantidad
@@ -36,9 +36,8 @@ class Paciente {
 }
 
 
-
 class Aparato {
-  var color = "blanco" // si esta seteado, como lo cambió?
+  const color = "blanco" // si esta seteado, como lo cambió?
   method esUsadoPor(unPaciente)
   method puedeSerUsado(unaPaciente) 
   //method esDeColor(unColor) = unColor == color
@@ -49,7 +48,7 @@ class Aparato {
 
 class Magneto inherits Aparato{
  var imantacion = 800
-  override method esUsadoPor(unPaciente) { unPaciente.disminuirDolor(unPaciente.dolor()*0.1) 
+  override method esUsadoPor(unPaciente) { unPaciente.disminuirDolor(unPaciente.dolor()*0.1)
     imantacion = 0.max(imantacion - 1)
 }
   override method puedeSerUsado(unPaciente) = true
@@ -64,8 +63,8 @@ class Bicicleta inherits Aparato {
  var cantAceite = 0
   override method esUsadoPor(unPaciente) { 
     if(self.puedeSerUsado(unPaciente)){
-      cantDesajuste = if(unPaciente.dolor()>30) cantDesajuste+1
-      cantAceite= if(unPaciente.edad()>=30 && unPaciente.edad()<=50) cantAceite+1
+      cantDesajuste = if(unPaciente.dolor()>30) cantDesajuste+1 else cantDesajuste
+      cantAceite= if(unPaciente.edad()>=30 && unPaciente.edad()<=50) cantAceite+1 else cantAceite
       unPaciente.disminuirDolor(4) 
       unPaciente.aumentarFortaleza(3)
 
@@ -87,6 +86,8 @@ class Minitramp inherits Aparato {
     }
   }
   override method puedeSerUsado(unPaciente) = unPaciente.dolor()<20
+  override method necesitaMantenimiento() = false
+  override method hacerMantenimiento() {}
 }
 
 class Resistente inherits Paciente{
@@ -99,10 +100,10 @@ class Resistente inherits Paciente{
 }
 
 class Caprichoso inherits Paciente{
-  override method puedeRealizarLaRutina(){
+  override method puedeRealizarLaRutina() =
      super() and
      self.hayAparatoDeColor("rojo")
-  }
+  
   method realizarSesionDoble(){
      self.realizarRutinaCompleta()
      self.realizarRutinaCompleta()
@@ -110,14 +111,14 @@ class Caprichoso inherits Paciente{
 }
 
 class RapidaRecuperacion inherits Paciente {
-  override method      self.realizarRutinaCompleta(){
+  override method realizarRutinaCompleta(){
     super()
-    self.disminuirDolor(dolor.decremento())
+    self.disminuirDolor(configuracionDolor.decremento())
  }
 
 }
 
-object dolor{
+object configuracionDolor{
  var valor = 3
  method decrementar(unValor){
   valor = unValor
@@ -133,11 +134,11 @@ object centro {
  method pacientesMenoresDe8años()= pacientes.filter({p=>p.edad() < 8})
  method cantPacientesQueNoCumplenSesion() = pacientes.count({p=>!p.puedeRealizarLaRutina()})
  method estaOptimo() = aparatos.all({p=>!p.necesitaMantenimiento()})
- method estaComplicado() = self.cantidadAparatosAReparar() >= aparatos.size/2
+ method estaComplicado() = self.cantidadAparatosAReparar() >= aparatos.size()/2
  method cantidadAparatosAReparar() = aparatos.count({p=>p.necesitaMantenimiento()})
  method aparatosAMantener() = aparatos.filter({p=>p.necesitaMantenimiento()})
  method visitaTecnica(){
-    aparatosAMantener.forEach({p=>p.hacerMantenimiento()})
+    self.aparatosAMantener().forEach({p=>p.hacerMantenimiento()})
 
  }
 
